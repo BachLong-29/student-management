@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import { Container, Header, Tab } from 'semantic-ui-react';
 import './App.css';
+import Class from './components/Class';
+import General from './components/General';
+import Student from './components/Students/Student';
 
 function App() {
+  const panes = [
+    {
+      menuItem: 'General Information',
+      render: () => <Tab.Pane ><General /></Tab.Pane>,
+    },
+    {
+      menuItem: 'Class Information',
+      render: () => <Tab.Pane ><Class /></Tab.Pane>,
+    },
+    {
+      menuItem: 'Student Information',
+      render: () => <Tab.Pane ><Student /></Tab.Pane>,
+    },
+  ];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header style={{padding: '10px 8px', margin: '0'}} textAlign='center'>University Management</Header>
+      <Tab panes={panes} />
+    </Container>
   );
 }
 
